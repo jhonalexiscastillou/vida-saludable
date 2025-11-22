@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRAE - Proyecto Ambiental Escolar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ====== ESTILOS GENERALES ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url("FOTO DE FONDO.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Capa de desenfoque y brillo (efecto liquid glass) */
+    .glass {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    }
+
+    /* ====== NAVBAR ====== */
+    nav {
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid #FFD700; /* amarillo institucional */
+    }
+
+    nav img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    nav h1 {
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: #FFD700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: #003366; /* azul oscuro institucional */
+    }
+
+    /* ====== CARRUSEL (solo una imagen visible a la vez) ====== */
+    header {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+    }
+
+    /* ====== SECCIONES ====== */
+    section {
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      text-align: center;
+      color: #fff;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    section p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #f0f0f0;
+    }
+
+    /* ====== TARJETAS ====== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      padding-bottom: 1rem;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    .card h3 {
+      color: #00BFFF;
+      margin: 1rem 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      padding: 0 1rem 1rem;
+      color: #eee;
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      border-top: 3px solid #FFD700;
+    }
+
+    footer p {
+      font-size: 0.95rem;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      header {
+        height: 55vh;
+      }
+
+      .carousel img {
+        height: 55vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="glass">
+    <h1><img src="iesjc.png" alt="Logo Colegio"> I.E. San José del Citará</h1>
+    <ul>
+      <li><a href="# TIEMPO LIBRE"> TIEMPO LIBRE</a></li>
+      <li><a href="#compostaje">Compostaje</a></li>
+      <li><a href="#cafe">Café</a></li>
+      <li><a href="#reciclaje">Reciclaje</a></li>
+      <li><a href="#jabones">Jabones</a></li>
+      <li><a href="#apicultura">Apicultura</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <div class="carousel">
+      <img src="2.jpg" alt="x">
+      <img src="1.jpg" alt="x">
+    </div>
+  </header>
+
+  <!--  TIEMPO LIBRE -->
+  <section id=" TIEMPO LIBRE" class="glass">
+    <h2>TIEMPO LIBRE</h2>
+    <p>Tu espacio para desconectar y recargar . Aquí encontrarás las herramientas y la inspiración para transformar tus horas libres en momentos de crecimiento y bienestar genuino . Rompe con la rutina y dedica tiempo a lo que realmente te apasiona..</p>
+    <div class="card-grid">
+      <div class="card glass">
+        <img src="TIEMPO LIBRE.jpg" alt=" TIEMPO LIBRE">
+        <h3>Aprender sembrando</h3>
+        <p>Los estudiantes cultivan hortalizas aplicando técnicas agroecológicas que fortalecen el respeto por el medio ambiente.</p>
+      </div>
+      <div class="card glass">
+        <img src="siembra.jpg" alt="Jornada de siembra">
+        <h3>Trabajo en comunidad</h3>
+        <p>La  TIEMPO LIBRE fomenta valores de cooperación y conciencia ambiental en cada jornada de siembra y cosecha.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOVIMIENTO -->
+  <section id="MOVIMIENTO" class="glass">
+    <h2>MOVIMIENTO</h2>
+    <p>El lenguaje universal del cuerpo. Esta sección celebra la agilidad, la coordinación, el equilibrio y la expresión corporal como pilares de una vida plena. Descubre cómo moverte con propósito, mejorar tu destreza física y sentir el ritmo interior que te defines..</p>
+    <div class="card-grid">
+      <div class="card glass">
+        <img src="compostaje.jpg" alt="Compostaje">
+        <h3>Abono ecológico</h3>
+        <p>El compost generado se utiliza en la  TIEMPO LIBRE, mejorando la fertilidad del suelo y reduciendo residuos.</p>
+      </div>
+      <div class="card glass">
+        <img src="compostaje2.jpg" alt="Lombricultura">
+        <h3>Lombricultura</h3>
+        <p>Usamos lombrices rojas californianas para optimizar la descomposición y crear humus rico en nutrientes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPORTES -->
+  <section id="cafe" class="glass">
+    <h2>DEPORTES</h2>
+    <p>La disciplina que forja el carácter. Explora el mundo de la competición, el trabajo en equipo y la superación personal . Más que una actividad física, el deporte es una escuela de vida que te enseña a establecer metas, enfrentar desafíos y celebrar cada logro..</p>
+    <div class="card-grid">
+      <div class="card glass">
+        <img src="cafetal.jpg" alt="Cultivo de café">
+        <h3>Semillas con historia</h3>
+        <p>Los estudiantes conocen las etapas del cultivo del café y aplican prácticas sostenibles.</p>
+      </div>
+      <div class="card glass">
+        <img src="cafe.jpg" alt="Secado del café">
+        <h3>Valor agregado</h3>
+        <p>Exploramos procesos de tostado y empaque escolar como forma de emprendimiento local.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECREACION -->
+  <section id="reciclaje" class="glass">
+    <h2>RECREACIÓN</h2>
+    <p>La celebración de la vida a través del juego y la aventura. La recreación es la clave para liberar el estrés, fomentar la interacción social y estimular la creatividad . Únete a actividades que te devuelvan la alegría espontánea de la infancia y te conecten con tu entorno..</p>
+    <div class="card-grid">
+      <div class="card glass">
+        <img src="reciclaje.jpeg" alt="Clasificación de residuos">
+        <h3>Separar para cuidar</h3>
+        <p>Los estudiantes aprenden a clasificar materiales mediante actividades lúdicas y creativas.</p>
+      </div>
+      <div class="card glass">
+        <img src="arte-reciclado.jpg" alt="Arte con reciclaje">
+        <h3>Creatividad verde</h3>
+        <p>Con materiales reutilizados elaboran obras y objetos útiles, mostrando que reciclar también es crear.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONOCIMIENTO-->
+  <section id="jabones" class="glass">
+    <h2>CONOCIMIENTO</h2>
+    <p>Expande tus horizontes sin límites. Esta sección está dedicada al aprendizaje continuo y la curiosidad intelectual . Explora temas que van más allá de lo cotidiano, desarrolla nuevas habilidades y alimenta tu mente para una comprensión más profunda del mundo.l.</p>
+    <div class="card-grid">
+      <div class="card glass">
+        <img src="jabones.jpg" alt="Jabones ecológicos">
+        <h3>Productos sostenibles</h3>
+        <p>Aprendemos a fabricar jabones biodegradables que cuidan la piel y el medio ambiente.</p>
+      </div>
+      <div class="card glass">
+        <img src="ventas.jpg" alt="Emprendimiento escolar">
+        <h3>Emprendimiento verde</h3>
+        <p>Los productos elaborados se exhiben en ferias escolares, fortaleciendo la autogestión.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LÚDICA -->
+  <section id="apicultura" class="glass">
+    <h2>LÚDICA</h2>
+    <p>El poder transformador del juego. La lúdica es la manera más efectiva de aprender, experimentar y resolver problemas con creatividad . Es el espacio donde la diversión se convierte en una herramienta pedagógica esencial para el desarrollo emocional y social..</p>
+    <div class="card-grid">
+      <div class="card glass">
+        <img src="apicultura.jpg" alt="Colmenas">
+        <h3>Guardianes de la naturaleza</h3>
+        <p>Aprenderemos sobre la importancia de las abejas y los cuidados para mantener su equilibrio ecológico.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Proyecto PRAE - Institución Educativa San José del Citará | Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // ====== Script para el carrusel de una imagen ======
+    const images = document.querySelectorAll('.carousel img');
+    let index = 0;
+
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+    }, 5000);
+  </script>
+
+</body>
+</html>
